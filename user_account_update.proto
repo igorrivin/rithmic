@@ -1,0 +1,32 @@
+
+package rti;
+
+message UserAccountUpdate
+	{       
+	// PB_OFFSET = 100000 , is the offset added for each MNM field id
+
+	enum UpdateType {
+	                 ADD      =  1;
+			 REMOVE   =  2;
+	                }
+
+	enum AccessType {
+	                 READ_ONLY   =  0;
+			 READ_WRITE  =  1;
+	                }
+
+	required int32       template_id      = 154467;    // PB_OFFSET + MNM_TEMPLATE_ID
+
+	optional UpdateType  update_type      = 154288;    // PB_OFFSET + MNM_REQUEST_TYPE
+	optional AccessType  access_type      = 154000;    // PB_OFFSET + MNM_ACCOUNT_ACCESS_TYPE
+
+	optional string      source_user_id   = 154247;    // PB_OFFSET + MNM_SOURCE_USER_ID
+	optional string      user             = 131003;    // PB_OFFSET + MNM_USER
+	optional string      fcm_id           = 154013;    // PB_OFFSET + MNM_FCM_ID
+	optional string      ib_id            = 154014;    // PB_OFFSET + MNM_IB_ID
+	optional string      account_id       = 154008;    // PB_OFFSET + MNM_ACCOUNT_ID
+	optional string      account_name     = 154002;    // PB_OFFSET + MNM_ACCOUNT_NAME
+
+	optional int32       ssboe            = 150100;    // PB_OFFSET + MNM_SECONDS_SINCE_BOE
+	optional int32       usecs            = 150101;    // PB_OFFSET + MNM_USECS
+	}

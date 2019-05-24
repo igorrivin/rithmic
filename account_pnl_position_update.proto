@@ -1,0 +1,55 @@
+
+package rti;
+
+message AccountPnLPositionUpdate
+	{       
+	// PB_OFFSET = 100000, is the offset added for each MNM field id
+
+	required int32    template_id                     = 154467;    // PB_OFFSET + MNM_TEMPLATE_ID
+	optional bool     is_snapshot                     = 110121;    // PB_OFFSET + MNM_UPDATE_TYPE               
+
+	optional string   fcm_id                          = 154013;    // PB_OFFSET + MNM_FCM_ID
+	optional string   ib_id                           = 154014;    // PB_OFFSET + MNM_IB_ID
+	optional string   account_id                      = 154008;    // PB_OFFSET + MNM_ACCOUNT_ID
+	
+	optional int32    fill_buy_qty                    = 154041;    // PB_OFFSET + MNM_FILL_BUY_QTY
+	optional int32    fill_sell_qty                   = 154042;    // PB_OFFSET + MNM_FILL_SELL_QTY
+
+	optional int32    order_buy_qty                   = 154037;    // PB_OFFSET + MNM_ORDER_BUY_QTY
+	optional int32    order_sell_qty                  = 154038;    // PB_OFFSET + MNM_ORDER_SELL_QTY
+
+	optional int32    buy_qty                         = 154260;    // PB_OFFSET + MNM_BUY_QTY
+	optional int32    sell_qty                        = 154261;    // PB_OFFSET + MNM_SELL_QTY
+
+	optional string   open_long_options_value         = 157105;    // PB_OFFSET + MNM_OPEN_LONG_OPTIONS_VALUE
+	optional string   open_short_options_value        = 157106;    // PB_OFFSET + MNM_OPEN_SHORT_OPTIONS_VALUE
+	optional string   closed_options_value            = 157107;    // PB_OFFSET + MNM_CLOSED_OPTIONS_VALUE
+	optional string   option_cash_reserved            = 157111;    // PB_OFFSET + MNM_OPTION_CASH_RESERVED
+	optional string   rms_account_commission          = 157113;    // PB_OFFSET + MNM_RMS_ACCOUNT_COMMISSION
+	
+	optional string   open_position_pnl               = 156961;    // PB_OFFSET + MNM_OPEN_POSITION_PNL
+	optional int32    open_position_quantity          = 156962;    // PB_OFFSET + MNM_OPEN_POSITION_QUANTITY
+	optional string   closed_position_pnl             = 156963;    // PB_OFFSET + MNM_CLOSED_POSITION_PNL
+
+	optional int32    closed_position_quantity        = 156964;    // PB_OFFSET + MNM_CLOSED_POSITION_QUANTITY
+	optional int32    net_quantity                    = 156967;    // PB_OFFSET + MNM_NET_QUANTITY
+
+	optional string   excess_buy_margin               = 156991;    // PB_OFFSET + MNM_EXCESS_BUY_MARGIN
+	optional string   margin_balance                  = 156977;    // PB_OFFSET + MNM_MARGIN_BALANCE
+	optional string   min_margin_balance              = 156976;    // PB_OFFSET + MNM_MIN_MARGIN_BALANCE
+	optional string   min_account_balance             = 156968;    // PB_OFFSET + MNM_MINIMUM_ACCOUNT_BALANCE
+	optional string   account_balance                 = 156970;    // PB_OFFSET + MNM_ACCOUNT_BALANCE
+
+	optional string   cash_on_hand                    = 156971;    // PB_OFFSET + MNM_CASH_ON_HAND
+	optional string   option_closed_pnl               = 157118;    // PB_OFFSET + MNM_OPTION_CLOSED_PNL
+	optional string   percent_maximum_allowable_loss  = 156965;    // PB_OFFSET + MNM_PERCENT_MAXIMUM_ALLOWABLE_LOSS
+	optional string   option_open_pnl                 = 157117;    // PB_OFFSET + MNM_OPTION_OPEN_PNL
+	optional string   mtm_account                     = 154262;    // PB_OFFSET + MNM_MTM_ACCOUNT
+	optional string   available_buying_power          = 157015;    // PB_OFFSET + MNM_AVAILABLE_BUYING_POWER
+	optional string   used_buying_power               = 157014;    // PB_OFFSET + MNM_USED_BUYING_POWER
+	optional string   reserved_buying_power           = 157013;    // PB_OFFSET + MNM_RESERVED_BUYING_POWER
+	optional string   excess_sell_margin              = 156992;    // PB_OFFSET + MNM_EXCESS_SELL_MARGIN
+
+	optional int32    ssboe                           = 150100;    // PB_OFFSET + MNM_SECONDS_SINCE_BOE
+	optional int32    usecs                           = 150101;    // PB_OFFSET + MNM_USECS
+	}

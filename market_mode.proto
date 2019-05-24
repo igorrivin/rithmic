@@ -1,0 +1,16 @@
+
+package rti;
+
+message MarketMode
+	{       
+	// PB_OFFSET = 100000, is the offset added for each MNM field id
+
+	required int32  template_id  = 154467;    // PB_OFFSET + MNM_TEMPLATE_ID
+	optional string symbol       = 110100;    // PB_OFFSET + MNM_SYMBOL
+	optional string exchange     = 110101;    // PB_OFFSET + MNM_EXCHANGE
+
+	optional string market_mode  = 154106;    // PB_OFFSET + MNM_MARKET_MODE
+
+	optional int32  ssboe        = 150100;    // PB_OFFSET + MNM_SECONDS_SINCE_BOE
+	optional int32  usecs        = 150101;    // PB_OFFSET + MNM_USECS
+	}

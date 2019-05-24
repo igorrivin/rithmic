@@ -1,0 +1,34 @@
+
+package rti;
+
+message EndOfDayPrices
+	{                                     
+	// PB_OFFSET = 100000, is the offset added for each MNM field id
+
+	// below enum is just for reference only, not used in this message
+	enum PresenceBits {
+	                  CLOSE                 =  1;
+		          SETTLEMENT            =  2;
+			  PROJECTED_SETTLEMENT  =  4;
+                          }
+
+
+	required int32  template_id                  = 154467;      // PB_OFFSET + MNM_TEMPLATE_ID
+	optional string symbol                       = 110100;      // PB_OFFSET + MNM_SYMBOL
+	optional string exchange                     = 110101;      // PB_OFFSET + MNM_EXCHANGE
+
+	optional uint32 presence_bits                = 149138;      // PB_OFFSET + MNM_PRICING_INDICATOR
+	optional uint32 clear_bits                   = 154571;      // PB_OFFSET + MNM_DISPLAY_INDICATOR
+	optional bool   is_snapshot                  = 110121;      // PB_OFFSET + MNM_UPDATE_TYPE               
+
+	optional double close_price                  = 100021;      // PB_OFFSET + MNM_CLOSE_PRICE
+	optional string close_date                   = 100079;      // PB_OFFSET + MNM_CLOSE_DATE
+
+	optional double settlement_price             = 100070;      // PB_OFFSET + MNM_SETTLEMENT_PRICE
+	optional string settlement_date              = 154132;      // PB_OFFSET + MNM_SETTLEMENT_DATE
+
+	optional double projected_settlement_price   = 155005;      // PB_OFFSET + MNM_PROJECTED_SETTLEMENT_PRICE
+  
+	optional int32  ssboe                        = 150100;      // PB_OFFSET + MNM_SECONDS_SINCE_BOE
+	optional int32  usecs                        = 150101;      // PB_OFFSET + MNM_USECS
+	}

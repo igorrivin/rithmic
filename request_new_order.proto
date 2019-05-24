@@ -1,0 +1,77 @@
+
+package rti;
+
+message RequestNewOrder
+	{                                
+	// PB_OFFSET = 100000, is the offset added for each MNM field id
+
+        enum TransactionType {
+	                      BUY  = 1;
+		              SELL = 2;
+	                     }
+
+        enum OrderPlacement {
+	                     MANUAL  = 1;
+			     AUTO    = 2;
+	                    }
+
+        enum Duration {
+	               DAY  = 1;
+		       GTC  = 2;
+		       IOC  = 3;
+		       FOK  = 4;
+                      }
+ 
+        enum PriceType {
+	                LIMIT              =  1;
+			MARKET             =  2;
+			STOP_LIMIT         =  3;
+			STOP_MARKET        =  4;
+			MARKET_IF_TOUCHED  =  5;
+			LIMIT_IF_TOUCHED   =  6;
+                       }
+
+	enum PriceField {
+	                 BID_PRICE    =  1;
+			 OFFER_PRICE  =  2;
+			 TRADE_PRICE  =  3;
+			 LEAN_PRICE   =  4;
+	                }
+
+	enum Condition {
+	     	        EQUAL_TO               =  1;
+			NOT_EQUAL_TO           =  2;
+			GREATER_THAN           =  3;
+			GREATER_THAN_EQUAL_TO  =  4;
+			LESSER_THAN            =  5;
+			LESSER_THAN_EQUAL_TO   =  6;
+	               }
+
+
+	required int32             template_id            = 154467;    // PB_OFFSET + MNM_TEMPLATE_ID
+	repeated string            user_msg               = 132760;    // PB_OFFSET + MNM_USER_MSG
+
+	optional string            fcm_id                 = 154013;    // PB_OFFSET + MNM_FCM_ID
+	optional string            ib_id                  = 154014;    // PB_OFFSET + MNM_IB_ID
+	optional string            account_id             = 154008;    // PB_OFFSET + MNM_ACCOUNT_ID
+
+	optional string            symbol                 = 110100;    // PB_OFFSET + MNM_SYMBOL
+	optional string            exchange               = 110101;    // PB_OFFSET + MNM_EXCHANGE
+
+	optional  int32            quantity               = 112004;    // PB_OFFSET + MNM_QUAN_TO_FILL
+	optional  double           price                  = 110306;    // PB_OFFSET + MNM_PRICE_TO_FILL
+	optional  double           trigger_price          = 149247;    // PB_OFFSET + MNM_TRIGGER_PRICE
+
+	optional  TransactionType  transaction_type       = 112003;    // PB_OFFSET + MNM_TRANSACTION_TYPE
+	optional  Duration         duration               = 112005;    // PB_OFFSET + MNM_DURATION
+	optional  PriceType        price_type             = 112008;    // PB_OFFSET + MNM_PRICE_TYPE
+
+	optional  string           trade_route            = 112016;    // PB_OFFSET + MNM_TRADE_ROUTE	
+	optional  OrderPlacement   manual_or_auto         = 154710;    // PB_OFFSET + MNM_MANUAL_OR_AUTO
+
+	optional  string           if_touched_symbol      = 154451;    // PB_OFFSET + MNM_TRIGGER_SYMBOL
+	optional  string           if_touched_exchange    = 154452;    // PB_OFFSET + MNM_TRIGGER_EXCHANGE
+	optional  Condition        if_touched_condition   = 154453;    // PB_OFFSET + MNM_TRIGGER_CONDITION
+	optional  PriceField       if_touched_price_field = 154454;    // PB_OFFSET + MNM_COMPARE_FIELD
+	optional  double           if_touched_price       = 153632;    // PB_OFFSET + MNM_IF_TOUCHED_PRICE
+	}

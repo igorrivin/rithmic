@@ -1,0 +1,99 @@
+
+package rti;
+
+message RithmicOrderNotification
+	{       
+	// PB_OFFSET = 100000, is the offset added for each MNM field id
+
+	enum NotifyType {
+	                 ORDER_RCVD_FROM_CLNT      =   1;
+			 MODIFY_RCVD_FROM_CLNT     =   2;
+			 CANCEL_RCVD_FROM_CLNT     =   3;
+			 OPEN_PENDING              =   4;
+			 MODIFY_PENDING            =   5;
+			 CANCEL_PENDING            =   6;
+			 ORDER_RCVD_BY_EXCH_GTWY   =   7;
+			 MODIFY_RCVD_BY_EXCH_GTWY  =   8;
+			 CANCEL_RCVD_BY_EXCH_GTWY  =   9;
+			 ORDER_SENT_TO_EXCH        =  10;
+			 MODIFY_SENT_TO_EXCH       =  11;
+			 CANCEL_SENT_TO_EXCH       =  12;
+			 OPEN                      =  13;
+			 MODIFIED                  =  14;
+			 COMPLETE                  =  15;
+			 MODIFICATION_FAILED       =  16;
+			 CANCELLATION_FAILED       =  17;
+			 TRIGGER_PENDING           =  18;
+			 GENERIC                   =  19;
+			 LINK_ORDERS_FAILED        =  20;
+                        }	
+
+        enum TransactionType {
+	                      BUY  = 1;
+		              SELL = 2;
+	                     }
+
+        enum Duration {
+	               DAY  = 1;
+		       GTC  = 2;
+		       IOC  = 3;
+		       FOK  = 4;
+                      }
+ 
+        enum PriceType {
+	                LIMIT        = 1;
+			MARKET       = 2;
+			STOP_LIMIT   = 3;
+			STOP_MARKET  = 4;
+                       }
+
+        enum OrderPlacement {
+	                     MANUAL  = 1;
+			     AUTO    = 2;
+	                    }
+
+	required int32             template_id            = 154467;    // PB_OFFSET + MNM_TEMPLATE_ID
+
+	optional NotifyType        notify_type            = 153625;    // PB_OFFSET + MNM_NOTIFICATION_TYPE
+	optional bool              is_snapshot            = 110121;    // PB_OFFSET + MNM_UPDATE_TYPE               
+
+	optional string            status                 = 110303;    // PB_OFFSET + MNM_STATUS
+	optional string            basket_id              = 110300;    // PB_OFFSET + MNM_BASKET_ID
+	optional string            original_basket_id     = 154497;    // PB_OFFSET + MNM_ORIGINAL_BASKET_ID
+
+	optional string            fcm_id                 = 154013;    // PB_OFFSET + MNM_FCM_ID
+	optional string            ib_id                  = 154014;    // PB_OFFSET + MNM_IB_ID
+	optional string            user_id                = 131003;    // PB_OFFSET + MNM_USER_ID
+	optional string            account_id             = 154008;    // PB_OFFSET + MNM_ACCOUNT_ID
+
+	optional string            symbol                 = 110100;    // PB_OFFSET + MNM_SYMBOL
+	optional string            exchange               = 110101;    // PB_OFFSET + MNM_EXCHANGE
+	optional string            trade_exchange         = 112021;    // PB_OFFSET + MNM_TRADE_EXCHANGE
+	optional string            trade_route            = 112016;    // PB_OFFSET + MNM_TRADE_ROUTE
+	optional string            exchange_order_id      = 149238;    // PB_OFFSET + MNM_EXCH_ORD_ID
+	optional string            instrument_type        = 110116;    // PB_OFFSET + MNM_INSTRUMENT_TYPE
+
+	optional  int32            quantity               = 112004;    // PB_OFFSET + MNM_QUAN_TO_FILL
+	optional  double           price                  = 110306;    // PB_OFFSET + MNM_PRICE_TO_FILL
+	optional  double           trigger_price          = 149247;    // PB_OFFSET + MNM_TRIGGER_PRICE
+
+	optional  TransactionType  transaction_type       = 112003;    // PB_OFFSET + MNM_TRANSACTION_TYPE
+	optional  Duration         duration               = 112005;    // PB_OFFSET + MNM_ORDER_DURATION
+	optional  PriceType        price_type             = 112008;    // PB_OFFSET + MNM_PRICE_TYPE
+	optional  PriceType        orig_price_type        = 154770;    // PB_OFFSET + MNM_ORIG_PRICE_TYPE
+	optional  OrderPlacement   manual_or_auto         = 154710;    // PB_OFFSET + MNM_MANUAL_OR_AUTO
+
+	optional string            sequence_number        = 112002;    // PB_OFFSET + MNM_SEQUENCE_NUMBER
+	optional string            orig_sequence_number   = 149263;    // PB_OFFSET + MNM_ORIG_SEQUENCE_NUMBER
+	optional string            cor_sequence_number    = 149264;    // PB_OFFSET + MNM_COR_SEQUENCE_NUMBER
+
+	optional string            currency               = 154382;    // PB_OFFSET + MNM_CURRENCY
+	optional string            country_code           = 154172;    // PB_OFFSET + MNM_COUNTRY_CODE
+
+	optional string            text                   = 120008;    // PB_OFFSET + MNM_TEXT
+	optional string            report_text            = 120028;    // PB_OFFSET + MNM_REPORT_TEXT
+	optional string            remarks                = 154806;    // PB_OFFSET + MNM_REMARKS
+
+	optional int32             ssboe                  = 150100;    // PB_OFFSET + MNM_SECONDS_SINCE_BOE
+	optional int32             usecs                  = 150101;    // PB_OFFSET + MNM_USECS
+	}
